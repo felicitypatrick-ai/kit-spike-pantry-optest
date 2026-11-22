@@ -2,7 +2,7 @@
 
 
 def slots_left(capacity, booked):
-    """Return how many pickup slots are still open."""
+    """Return how many pickup slots are still open for the day."""
     return max(capacity - booked, 0)
 
 
