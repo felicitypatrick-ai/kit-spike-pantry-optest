@@ -1,0 +1,135 @@
+name: Course kit
+
+# SDC332 course kit. Paste this file once, then run it from the Actions tab.
+# Each step writes files or branches in this repository only.
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "Which kit step to run"
+        required: true
+        type: choice
+        options:
+          - start
+          - team-update
+          - releases
+      app:
+        description: "Starter app (start step only)"
+        required: false
+        type: choice
+        default: pantry
+        options:
+          - pantry
+
+permissions:
+  contents: write
+
+jobs:
+  kit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run the kit step
+        shell: bash
+        env:
+          STEP: ${{ inputs.step }}
+          APP: ${{ inputs.app }}
+          WHO: ${{ github.actor }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cat > /tmp/kit.b64 <<'KIT'
+          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
+          Kqdr3Nzc/B8URzqOtVYAAA==
+          KIT
+          python3 - <<'PY'
+          import base64, gzip, hashlib, json, os, subprocess, sys
+          data = json.loads(gzip.decompress(base64.b64decode(open("/tmp/kit.b64").read().replace(" ", "").replace("\n", ""))))
+          step, who = os.environ["STEP"], os.environ["WHO"]
+          n = str(int(hashlib.sha256(who.lower().encode()).hexdigest(), 16) % 12 + 1)
+          out = open(os.environ["GITHUB_STEP_SUMMARY"], "a")
+          def say(t): print(t); out.write(t + "\n\n")
+          def git(*a): subprocess.run(["git", *a], check=True)
+          def write(p, t):
+              os.makedirs(os.path.dirname(p) or ".", exist_ok=True); open(p, "w").write(t)
+          def change(items):
+              for p, old, new in items:
+                  if old is None:
+                      write(p, new); continue
+                  t = open(p).read() if os.path.exists(p) else ""
+                  if old not in t:
+                      say(f"Stop: the kit could not update {p}, because that file is not as the starter left it. Ask your instructor.")
+                      sys.exit(1)
+                  write(p, t.replace(old, new, 1))
+          if step == "start":
+              if os.path.exists("course/card.json"):
+                  say("Your starter app is already here. Nothing changed."); sys.exit(0)
+              d = data[os.environ.get("APP") or "pantry"]; k = d["k"][n]
+              for p, t in d["f"].items(): write(p, t)
+              write("course/card.json", k["c"]); change(k["s"])
+              git("add", "-A"); git("commit", "-q", "-m", "Add the starter app and team card"); git("push", "-q", "origin", "HEAD:main")
+              say(f"Done: the starter app and your team card (card {n}) are on main. Open course/card.json to read your team's facts.")
+              sys.exit(0)
+          card = json.load(open("course/card.json")) if os.path.exists("course/card.json") else None
+          if not card:
+              say("Stop: run the start step first."); sys.exit(1)
+          name = next(a for a in data if all(os.path.exists(p) for p in data[a]["f"] if p.startswith("app/")))
+          k = data[name]["k"][n]
+          if step == "team-update":
+              git("checkout", "-q", "-b", "team-update")
+              for p, t in data[name]["n"].items(): write(p, t)
+              change(k["u"])
+              git("add", "-A"); git("commit", "-q", "-m", "Add the team's update: pickup reminders"); git("push", "-q", "-f", "origin", "team-update")
+              say("Done: the team's update is on branch team-update. Open a pull request from team-update into main to start its checks.")
+          elif step == "releases":
+              base = "main"
+              for v, items in k["r"]:
+                  git("checkout", "-q", base); git("checkout", "-q", "-B", f"release-{v}"); base = f"release-{v}"
+                  change(items)
+                  git("add", "-A"); git("commit", "-q", "-m", f"Release {v}"); git("push", "-q", "-f", "origin", f"release-{v}")
+              say("Done: branches release-1.1, release-1.2 and release-1.3 are ready. Send each one in order: open its pull request into main and merge it.")
+          PY
