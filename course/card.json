@@ -1,0 +1,15 @@
+{
+  "card": 8,
+  "team": {
+    "developers": 4,
+    "releases": "every week",
+    "who checks a release": "the owner signs off on Fridays",
+    "time to fix a bad release in production": "about an hour",
+    "separate tester": "no"
+  },
+  "owner's rule": {
+    "Saturday capacity (families)": 22,
+    "place in line": "the first family on the waitlist is number 1"
+  },
+  "speed target (seconds per pipeline run)": 35
+}
