@@ -1,6 +1,6 @@
 import unittest
 
-from app.slots import can_book, slots_left
+from app.slot import can_book, slots_left
 
 
 class SlotTests(unittest.TestCase):
