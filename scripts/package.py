@@ -2,7 +2,6 @@
 import os
 import shutil
 
-os.makedirs("dist", exist_ok=True)
 with open("VERSION") as f:
     version = f.read().strip()
 with open(os.path.join("dist", "BUILD_INFO.txt"), "w") as f:
